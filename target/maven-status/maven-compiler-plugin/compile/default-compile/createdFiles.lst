@@ -1,0 +1,13 @@
+com/dsg/sqlconverter/example/MySQLToPostgreSQLExample.class
+com/dsg/aiSdk/model/ConversationMessage.class
+com/dsg/aiSdk/example/ScenarioChatExample.class
+com/dsg/aiSdk/model/ChatTurnResult.class
+com/dsg/aiSdk/client/CursorAgentsApi.class
+com/dsg/aiSdk/config/CursorCredentials.class
+com/dsg/aiSdk/CursorApiException.class
+org/example/App.class
+com/dsg/sqlconverter/MySQLToPostgreSQLConverter.class
+com/dsg/aiSdk/model/ConversationScenario.class
+com/dsg/aiSdk/internal/AssistantContentParser.class
+com/dsg/aiSdk/client/CursorCloudAgentsApiClient.class
+com/dsg/aiSdk/service/ScenarioConversationSession.class
