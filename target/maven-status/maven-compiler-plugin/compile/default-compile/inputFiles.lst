@@ -1,6 +1,7 @@
 /workspace/src/main/java/com/dsg/aiSdk/config/CursorCredentials.java
 /workspace/src/main/java/com/dsg/aiSdk/internal/AssistantContentParser.java
 /workspace/src/main/java/com/dsg/sqlconverter/MySQLToPostgreSQLConverter.java
+/workspace/src/main/java/com/dsg/sqlconverter/example/MySQLViewExample.java
 /workspace/src/main/java/com/dsg/aiSdk/model/ConversationScenario.java
 /workspace/src/main/java/com/dsg/aiSdk/model/ConversationMessage.java
 /workspace/src/main/java/com/dsg/aiSdk/service/ScenarioConversationSession.java

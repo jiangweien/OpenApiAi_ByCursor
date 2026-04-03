@@ -5,6 +5,7 @@ com/dsg/aiSdk/model/ChatTurnResult.class
 com/dsg/aiSdk/client/CursorAgentsApi.class
 com/dsg/aiSdk/config/CursorCredentials.class
 com/dsg/aiSdk/CursorApiException.class
+com/dsg/sqlconverter/example/MySQLViewExample.class
 org/example/App.class
 com/dsg/sqlconverter/MySQLToPostgreSQLConverter.class
 com/dsg/aiSdk/model/ConversationScenario.class

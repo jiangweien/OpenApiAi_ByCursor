@@ -1,3 +1,4 @@
+/workspace/src/test/java/com/dsg/sqlconverter/MySQLViewConverterTest.java
 /workspace/src/test/java/com/dsg/aiSdk/internal/AssistantContentParserTest.java
 /workspace/src/test/java/com/dsg/aiSdk/model/ConversationScenarioTest.java
 /workspace/src/test/java/com/dsg/aiSdk/service/ScenarioConversationSessionTest.java

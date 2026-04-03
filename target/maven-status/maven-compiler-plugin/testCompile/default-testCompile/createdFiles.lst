@@ -2,4 +2,5 @@ com/dsg/sqlconverter/MySQLToPostgreSQLConverterTest.class
 com/dsg/aiSdk/internal/AssistantContentParserTest.class
 com/dsg/aiSdk/config/CursorCredentialsTest.class
 com/dsg/aiSdk/model/ConversationScenarioTest.class
+com/dsg/sqlconverter/MySQLViewConverterTest.class
 com/dsg/aiSdk/service/ScenarioConversationSessionTest.class

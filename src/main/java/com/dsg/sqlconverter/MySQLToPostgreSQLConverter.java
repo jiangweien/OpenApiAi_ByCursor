@@ -34,6 +34,7 @@ public class MySQLToPostgreSQLConverter {
         
         String result = mysqlSql;
         
+        result = convertView(result);
         result = convertDataTypes(result);
         result = convertAutoIncrement(result);
         result = convertBackticks(result);
@@ -43,6 +44,8 @@ public class MySQLToPostgreSQLConverter {
         result = convertIfNotExists(result);
         result = convertStringFunctions(result);
         result = convertDateFunctions(result);
+        result = convertExtractFunction(result);
+        result = convertCountFunction(result);
         
         return result;
     }
@@ -149,5 +152,49 @@ public class MySQLToPostgreSQLConverter {
         sql = curtimePattern.matcher(sql).replaceAll("CURRENT_TIME");
         
         return sql;
+    }
+    
+    private String convertView(String sql) {
+        Pattern viewPattern = Pattern.compile(
+            "CREATE\\s+(?:OR\\s+REPLACE\\s+)?ALGORITHM\\s*=\\s*\\w+\\s+DEFINER\\s*=\\s*`[^`]+`@`[^`]+`\\s+SQL\\s+SECURITY\\s+\\w+\\s+VIEW",
+            Pattern.CASE_INSENSITIVE
+        );
+        sql = viewPattern.matcher(sql).replaceAll("CREATE OR REPLACE VIEW");
+        
+        Pattern definerOnlyPattern = Pattern.compile(
+            "CREATE\\s+(?:OR\\s+REPLACE\\s+)?DEFINER\\s*=\\s*`[^`]+`@`[^`]+`\\s+(?:SQL\\s+SECURITY\\s+\\w+\\s+)?VIEW",
+            Pattern.CASE_INSENSITIVE
+        );
+        sql = definerOnlyPattern.matcher(sql).replaceAll("CREATE OR REPLACE VIEW");
+        
+        Pattern algorithmOnlyPattern = Pattern.compile(
+            "CREATE\\s+(?:OR\\s+REPLACE\\s+)?ALGORITHM\\s*=\\s*\\w+\\s+VIEW",
+            Pattern.CASE_INSENSITIVE
+        );
+        sql = algorithmOnlyPattern.matcher(sql).replaceAll("CREATE OR REPLACE VIEW");
+        
+        return sql;
+    }
+    
+    private String convertExtractFunction(String sql) {
+        Pattern pattern = Pattern.compile(
+            "extract\\s*\\(\\s*(year|month|day|hour|minute|second)\\s+from\\s+",
+            Pattern.CASE_INSENSITIVE
+        );
+        Matcher matcher = pattern.matcher(sql);
+        StringBuffer result = new StringBuffer();
+        
+        while (matcher.find()) {
+            String unit = matcher.group(1).toUpperCase();
+            matcher.appendReplacement(result, "EXTRACT(" + unit + " FROM ");
+        }
+        matcher.appendTail(result);
+        
+        return result.toString();
+    }
+    
+    private String convertCountFunction(String sql) {
+        Pattern pattern = Pattern.compile("count\\s*\\(\\s*0\\s*\\)", Pattern.CASE_INSENSITIVE);
+        return pattern.matcher(sql).replaceAll("COUNT(*)");
     }
 }
